@@ -2,6 +2,7 @@ let basket = [];
 
 function addToBasket(name, price) {
     const existingItem = basket.find(item => item.name === name);
+
     if (existingItem) {
         existingItem.quantity += 1;
     } else {

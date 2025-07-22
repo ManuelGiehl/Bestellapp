@@ -1,3 +1,18 @@
+function renderApp() {
+    return `
+        ${renderHeader()}
+        <div class="main-container">
+            <main class="content">
+                ${renderRestaurantBanner()}
+                ${renderNavTabs()}
+                ${renderMenuSection()}
+            </main>
+            ${renderBasket()}
+        </div>
+        ${renderFooter()}
+    `;
+}
+
 function renderMenuItem(dish) {
     return `
         <div class="menu-item" data-id="${dish.name}">
@@ -11,74 +26,11 @@ function renderMenuItem(dish) {
     `;
 }
 
-function renderMenuItems(category) {
-    const mainDishesContainer = document.getElementById('main-dishes-items');
-    const sideDishesContainer = document.getElementById('side-dishes-items');
-    const drinksContainer = document.getElementById('drinks-items');
-    
-    const mainDishes = myDishes.filter(dish => dish.category === 'main-dishes');
-    const sideDishes = myDishes.filter(dish => dish.category === 'side-dishes');
-    const drinks = myDishes.filter(dish => dish.category === 'drinks');
-    
-    mainDishesContainer.innerHTML = mainDishes.map(dish => renderMenuItem(dish)).join('');
-    sideDishesContainer.innerHTML = sideDishes.map(dish => renderMenuItem(dish)).join('');
-    drinksContainer.innerHTML = drinks.map(dish => renderMenuItem(dish)).join('');
-}
-
-function renderBasketItem(item) {
-    return `
-        <div class="basket-item" data-id="${item.name}">
-            <div class="basket-item-header">
-                <div class="basket-item-name">${item.name}</div>
-                <div class="basket-item-price">${(item.price * item.quantity).toFixed(2).replace('.', ',')}€</div>
-            </div>
-            <div class="basket-item-controls">
-                <div class="quantity-controls">
-                    <button class="quantity-btn" onclick="decreaseQuantity('${item.name}')" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
-                    <span class="quantity-display">${item.quantity}x</span>
-                    <button class="quantity-btn" onclick="increaseQuantity('${item.name}')">+</button>
-                </div>
-                <button class="delete-btn" onclick="removeFromBasket('${item.name}')">🗑</button>
-            </div>
-        </div>
-    `;
-}
-
-function renderEmptyBasket() {
-    return `
-        <div class="basket-empty">
-            <p>Ihr Warenkorb ist leer</p>
-            <small>Fügen Sie Gerichte hinzu, um zu bestellen</small>
-        </div>
-    `;
-}
-
-function renderBasketSummary(subtotal, deliveryCost, total) {
-    return `
-        <div class="summary-row">
-            <span>Zwischensumme</span>
-            <span>${subtotal.toFixed(2).replace('.', ',')}€</span>
-        </div>
-        <div class="summary-row">
-            <span>Lieferkosten</span>
-            <span>${deliveryCost.toFixed(2).replace('.', ',')}€</span>
-        </div>
-        <div class="summary-row total">
-            <span>Gesamt</span>
-            <span>${total.toFixed(2).replace('.', ',')}€</span>
-        </div>
-    `;
-}
-
 function renderHeader() {
     return `
         <header class="header">
             <div class="header-content">
                 <img src="assets/icons/Bestell App- Logo.svg" alt="Bestell App Logo" class="logo">
-                <div class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
                 </div>
             </div>
         </header>
@@ -88,7 +40,7 @@ function renderHeader() {
 function renderRestaurantBanner() {
     return `
         <div class="restaurant-banner">
-            <img src="assets/img/food-7724000_1920.jpg" alt="Paradise Noodles Banner">
+            <img src="assets/img/food-7724000_1920.jpg" alt="Restaurant Banner">
             <div class="restaurant-info">
                 <div class="restaurant-logo">
                     <div class="logo-placeholder">
@@ -158,17 +110,62 @@ function renderFooter() {
     `;
 }
 
-function renderApp() {
+function renderBasketItem(item) {
     return `
-        ${renderHeader()}
-        <div class="main-container">
-            <main class="content">
-                ${renderRestaurantBanner()}
-                ${renderNavTabs()}
-                ${renderMenuSection()}
-            </main>
-            ${renderBasket()}
+        <div class="basket-item" data-id="${item.name}">
+            <div class="basket-item-header">
+                <div class="basket-item-name">${item.name}</div>
+                <div class="basket-item-price">${(item.price * item.quantity).toFixed(2).replace('.', ',')}€</div>
+            </div>
+            <div class="basket-item-controls">
+                <div class="quantity-controls">
+                    <button class="quantity-btn" onclick="decreaseQuantity('${item.name}')" ${item.quantity <= 1 ? 'disabled' : ''}>-</button>
+                    <span class="quantity-display">${item.quantity}x</span>
+                    <button class="quantity-btn" onclick="increaseQuantity('${item.name}')">+</button>
+                </div>
+                <button class="delete-btn" onclick="removeFromBasket('${item.name}')">🗑</button>
+            </div>
         </div>
-        ${renderFooter()}
     `;
 }
+
+function renderEmptyBasket() {
+    return `
+        <div class="basket-empty">
+            <p>Ihr Warenkorb ist leer</p>
+            <small>Fügen Sie Gerichte hinzu, um zu bestellen</small>
+        </div>
+    `;
+}
+
+function renderBasketSummary(subtotal, deliveryCost, total) {
+    return `
+        <div class="summary-row">
+            <span>Zwischensumme</span>
+            <span>${subtotal.toFixed(2).replace('.', ',')}€</span>
+        </div>
+        <div class="summary-row">
+            <span>Lieferkosten</span>
+            <span>${deliveryCost.toFixed(2).replace('.', ',')}€</span>
+        </div>
+        <div class="summary-row total">
+            <span>Gesamt</span>
+            <span>${total.toFixed(2).replace('.', ',')}€</span>
+        </div>
+    `;
+}
+
+function renderMenuItems(category) {
+    const mainDishesContainer = document.getElementById('main-dishes-items');
+    const sideDishesContainer = document.getElementById('side-dishes-items');
+    const drinksContainer = document.getElementById('drinks-items');
+    
+    const mainDishes = myDishes.filter(dish => dish.category === 'main-dishes');
+    const sideDishes = myDishes.filter(dish => dish.category === 'side-dishes');
+    const drinks = myDishes.filter(dish => dish.category === 'drinks');
+    
+    mainDishesContainer.innerHTML = mainDishes.map(dish => renderMenuItem(dish)).join('');
+    sideDishesContainer.innerHTML = sideDishes.map(dish => renderMenuItem(dish)).join('');
+    drinksContainer.innerHTML = drinks.map(dish => renderMenuItem(dish)).join('');
+}
+

@@ -153,11 +153,11 @@ function renderBasketSummary(subtotal, deliveryCost, total) {
             <span>Gesamt</span>
             <span>${total.toFixed(2).replace('.', ',')}€</span>
         </div>
-        <button class="order-button">Bestellen</button>
+        <button class="order-button" onclick="placeOrder()">Bestellen</button>
     `;
 }
 
-function renderMenuItems(category) {
+function renderMenuItems() {
     const mainDishesContainer = document.getElementById('main-dishes-items');
     const sideDishesContainer = document.getElementById('side-dishes-items');
     const drinksContainer = document.getElementById('drinks-items');
@@ -171,3 +171,16 @@ function renderMenuItems(category) {
     drinksContainer.innerHTML = drinks.map(dish => renderMenuItem(dish)).join('');
 }
 
+function showOrderMessage() {
+    const messageContainer = document.createElement('div');
+    messageContainer.className = 'order-message';
+    messageContainer.innerHTML = `
+        <div class="order-message-content">
+            <h3>Bestellung erfolgreich!</h3>
+            <p>Ihre Bestellung wurde erfolgreich aufgegeben.</p>
+            <button onclick="this.parentElement.parentElement.remove()">Schließen</button>
+        </div>
+    `;
+    
+    document.body.appendChild(messageContainer); 
+}

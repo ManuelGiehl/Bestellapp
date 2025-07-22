@@ -59,3 +59,12 @@ function removeFromBasket(name) {
     basket = basket.filter(item => item.name !== name);
     updateBasketDisplay();
 }
+
+function placeOrder() {
+    if (basket.length === 0) {
+        return;
+    }
+    basket = [];
+    updateBasketDisplay();
+    showOrderMessage();
+}

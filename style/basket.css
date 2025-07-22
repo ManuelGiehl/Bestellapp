@@ -176,3 +176,29 @@
 .basket-empty small {
     font-size: 14px;
 }
+
+.order-button {
+    width: 100%;
+    background: #ff6b35;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 16px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
+}
+
+.order-button:hover {
+    background: #e55a2b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+}
+
+.order-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(255, 107, 53, 0.2);
+}

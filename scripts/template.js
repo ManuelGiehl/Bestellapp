@@ -92,6 +92,7 @@ function renderBasket() {
                 <h2>Warenkorb</h2>
             </div>
             <div class="basket-items" id="basket-items">
+                ${renderEmptyBasket()}
             </div>
             <div class="basket-summary">
                 ${renderBasketSummary(0, 5.00, 5.00)}
@@ -152,6 +153,7 @@ function renderBasketSummary(subtotal, deliveryCost, total) {
             <span>Gesamt</span>
             <span>${total.toFixed(2).replace('.', ',')}€</span>
         </div>
+        <button class="order-button">Bestellen</button>
     `;
 }
 

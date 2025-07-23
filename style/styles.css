@@ -19,8 +19,55 @@
 .logo {
     height: 60px;
     width: auto;
-    
 }
+
+.header-basket {
+    display: none;
+    position: relative;
+    background: #ff6b35;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.header-basket:hover {
+    background: #e55a2b;
+    transform: scale(1.05);
+}
+
+.basket-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket-svg {
+    width: 40px;
+    height: 40px;
+}
+
+.basket-counter {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e74c3c;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+}
+
+
 
 .menu-icon {
     display: flex;
@@ -46,6 +93,13 @@
 .content {
     width: calc(100% - 308px);
     padding: 16px;
+}
+
+@media (max-width: 900px) {
+    .content {
+        width: 100%;
+        padding: 12px;
+    }
 }
 
 .restaurant-banner {

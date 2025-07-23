@@ -9,6 +9,7 @@ function renderApp() {
             </main>
             ${renderBasket()}
         </div>
+        ${renderBasketOverlay()}
         ${renderFooter()}
     `;
 }
@@ -31,6 +32,11 @@ function renderHeader() {
         <header class="header">
             <div class="header-content">
                 <img src="assets/icons/Bestell App- Logo.svg" alt="Bestell App Logo" class="logo">
+                <div class="header-basket" onclick="toggleHeaderBasket()">
+                    <div class="basket-icon">
+                        <img src="assets/img/basket.svg" alt="Warenkorb" class="basket-svg">
+                    </div>
+                    <div class="basket-counter" id="header-basket-counter">0</div>
                 </div>
             </div>
         </header>
@@ -169,6 +175,27 @@ function renderMenuItems() {
     mainDishesContainer.innerHTML = mainDishes.map(dish => renderMenuItem(dish)).join('');
     sideDishesContainer.innerHTML = sideDishes.map(dish => renderMenuItem(dish)).join('');
     drinksContainer.innerHTML = drinks.map(dish => renderMenuItem(dish)).join('');
+}
+
+
+
+function renderBasketOverlay() {
+    return `
+        <div class="basket-overlay" id="basket-overlay">
+            <div class="basket-overlay-content">
+                <div class="basket-overlay-header">
+                    <h2>Warenkorb</h2>
+                    <button class="close-button" onclick="closeBasketOverlay()">✕</button>
+                </div>
+                <div class="basket-overlay-items" id="basket-overlay-items">
+                    ${renderEmptyBasket()}
+                </div>
+                <div class="basket-overlay-summary" id="basket-overlay-summary">
+                    ${renderBasketSummary(0, 5.00, 5.00)}
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 function showOrderMessage() {

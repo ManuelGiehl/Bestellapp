@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderMenuItems();
     setupTabNavigation();
     updateBasketDisplay();
+    updateHeaderBasketCounter();
 });
 
 function setupTabNavigation() {

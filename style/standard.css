@@ -31,3 +31,138 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+        max-width: 100%;
+    }
+    
+    .basket_wrapper {
+        display: none !important;
+    }
+    
+    .header-basket {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0 12px;
+    }
+    
+    .logo {
+        height: 50px;
+    }
+    
+    .restaurant-banner {
+        height: 300px;
+        margin-bottom: 16px;
+    }
+    
+    .restaurant-info {
+        padding: 16px;
+    }
+    
+    .nav-tabs {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    
+    .tab {
+        flex: 1;
+        min-width: 120px;
+        font-size: 14px;
+        padding: 12px 8px;
+    }
+    
+    .category-banner {
+        height: 120px;
+    }
+    
+    .menu-item {
+        padding: 12px;
+    }
+    
+    .menu-item-name {
+        font-size: 16px;
+    }
+    
+    .menu-item-description {
+        font-size: 14px;
+    }
+    
+    .add-button {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+    
+
+}
+
+@media (max-width: 320px) {
+    .header-content {
+        padding: 0 8px;
+    }
+    
+    .logo {
+        height: 40px;
+    }
+    
+    .content {
+        padding: 8px;
+    }
+    
+    .restaurant-banner {
+        height: 250px;
+    }
+    
+    .restaurant-info {
+        padding: 12px;
+    }
+    
+    .restaurant-name {
+        font-size: 18px;
+    }
+    
+    .nav-tabs {
+        gap: 4px;
+    }
+    
+    .tab {
+        font-size: 12px;
+        padding: 10px 6px;
+        min-width: 100px;
+    }
+    
+    .category-banner {
+        height: 100px;
+    }
+    
+    .section-title {
+        font-size: 18px;
+        padding: 12px 8px;
+    }
+    
+    .menu-item {
+        padding: 10px;
+    }
+    
+    .menu-item-name {
+        font-size: 15px;
+    }
+    
+    .menu-item-description {
+        font-size: 13px;
+    }
+    
+    .add-button {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+
+}

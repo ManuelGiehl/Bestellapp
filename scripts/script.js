@@ -37,6 +37,10 @@ function scrollToBanner(category) {
     
     let banner = document.getElementById(bannerId);
     if (banner) {
-        banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const bannerPosition = banner.offsetTop;
+        window.scrollTo({ 
+            top: bannerPosition - 100, 
+            behavior: 'smooth' 
+        });
     }
 }
